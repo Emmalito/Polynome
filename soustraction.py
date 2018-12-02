@@ -3,7 +3,7 @@
 #-------------------------------------------------------------------------------------------------------
 #__author__ : DELAR EMMALITO
 #__date__ : 11/22/2018
-#__version__ : 1.3
+#__version__ : 1.4
 #======================================================================================================
 from addition import *
 #======================================================================================================
@@ -34,11 +34,11 @@ def soustraction(poly1,poly2):
             poly1.supprime_en_tete(), poly2.supprime_en_tete()
         #end
     while not poly1.liste_vide(): 
-        somme = construit_liste(poly1.tete(),somme)
+        différence = construit_liste(poly1.tete(),différence)
         poly1.supprime_en_tete()
     while not poly2.liste_vide():
         poly2.tete().coef = -poly2.tete().coef 
-        somme = construit_liste(poly2.tete(),somme)
+        différence = construit_liste(poly2.tete(),différence)
         poly2.supprime_en_tete()
     return retourne_liste(différence)
     #End
@@ -71,11 +71,11 @@ def soustraction_rec(poly1,poly2,différence=liste()):
             return soustraction_rec(poly1.corps(),poly2.corps(),différence)
         #end
     while not poly1.liste_vide(): 
-        somme = construit_liste(poly1.tete(),somme)
+        différence = construit_liste(poly1.tete(),différence)
         return soustraction_rec(poly1.corps(),poly2,différence)
     while not poly2.liste_vide():
         poly2.tete().coef = -poly2.tete().coef 
-        somme = construit_liste(poly2.tete(),somme)
+        différence = construit_liste(poly2.tete(),différence)
         return soustraction_rec(poly1,poly2.corps(),différence)
     #End
 
@@ -109,11 +109,11 @@ def soustraction_ptr(poly1,poly2):
             ptr_1, ptr_2 = ptr_1.suivant, ptr_2.suivant
         #end
     while ptr_1 != None :
-        somme.debut = cellule(ptr_1.valeur,somme.debut)
+        différence.debut = cellule(ptr_1.valeur,différence.debut)
         ptr_1 = ptr_1.suivant
     while ptr_2 != None :
         ptr_2.valeur.coef = -ptr_2.valeur.coef
-        somme.debut = cellule(ptr_2.valeur,somme.debut)
+        différence.debut = cellule(ptr_2.valeur,différence.debut)
         ptr_2 = ptr_2.suivant
     return retourne_liste(différence)
     #End

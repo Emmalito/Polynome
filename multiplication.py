@@ -2,13 +2,71 @@
 # Projet polynôme
 #-------------------------------------------------------------------------------------------------------
 #__author__ : DELAR EMMALITO
-#__date__ : 11/17/2018
-#__version__ : 1.4
+#__date__ : 11/23/2018
+#__version__ : 2.1
 #======================================================================================================
 from soustraction import *
 #======================================================================================================
-   
-def multiplication_ptr(poly_1,poly_2):
+
+def multiplication_it(poly_1,poly_2) :
+    """ Fonction recursive retournat une liste contenant le developpement du produit de poly_1 par
+        poly_2 """
+    assert isinstance (poly_1,liste),"Le polynôme doit être une liste"
+    assert isinstance (poly_2,liste),"Le polynôme doit être une liste"
+
+    #Var
+    copy_poly_2, prod1, produit = liste(), liste(), liste() #Liste
+    
+    #Begin
+    copy_poly_2 = copy_liste(poly_2)    #On copie poly_2 à l'aide d'une primitive de liste
+    prod1 = liste()                 #On crée une liste pour le produit de poly_1.tete * poly_2
+    while not poly_1.liste_vide() :    #Tant qu'on a pas développé tout le produit
+        #begin
+        copy_poly_2 = copy_liste(poly_2)    #On copie poly_2 à l'aide d'une primitive de liste
+        prod1 = liste()                 #On crée une liste pour le produit de poly_1.tete * poly_2
+        while not copy_poly_2.liste_vide() :  #Tant qu'on a pas multiplié le terme de poly1 par poly2
+            #begin
+            copy_poly_2.tete().coef = copy_poly_2.tete().coef * poly_1.tete().coef
+            copy_poly_2.tete().p = copy_poly_2.tete().p + poly_1.tete().p
+            prod1 = construit_liste(copy_poly_2.tete(),prod1)  #On insere le résultat dans une liste
+            copy_poly_2.supprime_en_tete()
+            #end
+        produit = construit_liste(retourne_liste(prod1),produit) #On insere le developpement dans une liste
+        poly_1 = poly_1.corps() #On recommence avec le terme suivant
+        #end
+    return multiplication_aux(produit)  #On retourne la liste du developpement du produit(poly1*poly2)
+    #End
+
+#======================================================================================================
+
+def multiplication_rec(poly_1,poly_2,produit=liste()) :
+    """ Fonction recursive retournat une liste contenant le developpement du produit de poly_1 par
+        poly_2 """
+    assert isinstance (poly_1,liste),"Le polynôme doit être une liste"
+    assert isinstance (poly_2,liste),"Le polynôme doit être une liste"
+
+    #Begin
+    copy_poly_2 = copy_liste(poly_2)    #On copie poly_2 à l'aide d'une primitive de liste
+    prod1 = liste()                 #On crée une liste pour le produit de poly_1.tete * poly_2
+    if not poly_1.liste_vide() :    #Tant qu'on a pas développé tout le produit
+        #begin
+        while not copy_poly_2.liste_vide() :  #Tant qu'on a pas multiplié le terme de poly1 par poly2
+            #begin
+            copy_poly_2.tete().coef = copy_poly_2.tete().coef * poly_1.tete().coef
+            copy_poly_2.tete().p = copy_poly_2.tete().p + poly_1.tete().p
+            prod1 = construit_liste(copy_poly_2.tete(),prod1)  #On insere le résultat dans une liste
+            copy_poly_2.supprime_en_tete()
+            #end
+        produit = construit_liste(retourne_liste(prod1),produit) #On insere le developpement dans une liste
+        return multiplication_rec(poly_1.corps(),poly_2,produit) #On rappel la fonction
+        #end
+    else :
+        return multiplication_aux(produit)  #On retourne la liste du developpement du produit(poly1*poly2)
+    #End
+
+#======================================================================================================
+    
+def multiplication_ptr(poly_1,poly_2) :
     """ Fonction retournant le développement du produit entre poly_1 et poly_2 à l'aide de la
         structure des listes """
     assert isinstance (poly_1,liste),"Le polynôme doit être une liste"
@@ -62,15 +120,11 @@ def multiplication_aux(produit):
 
 
 
-""" Info : La fonction ptr retourne une liste contenant le développement du produit de poly1 par poly2.
+""" Info : Les fonction it,rec et ptr,retournent une liste contenant le développement du produit de poly1 par poly2.
     La fonction aux retourne la somme de ce développement.
     Les fonctions n'ont pas trop été testé, donc il peut y avoir des erreurs.
-    Il manque la fonction rec et it.
-    Plus généralement s'il y a des erreurs merci de me le faire savoir.
-    Désolé si les commentaires sont bourrés de fautes
-    Je ne vais pas trop répondre aux questions
-    Pour un petit don : https://www.paypal.me/envoimonble/1
-    Pour un gros don : https://www.paypal.me/envoimonble/10
+    J'ai créé une nouvelle primitive des listes, copy_liste, qui permet de copier une liste dans un autre répertoire,
+    ce qui permet de modifier la copie sans modifier l'original.
     Je vous laisse tester le programme """
 
     
@@ -79,7 +133,7 @@ def multiplication_aux(produit):
 #l = polynome("2x^0,0x^1,5x^2,3x^3")
 
 
-#m = multiplication_ptr(l,p)
+#m = multiplication_it(l,p)
 
 #m = multiplication_ptr(p,l)
 

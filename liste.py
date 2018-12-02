@@ -49,10 +49,16 @@ def retourne_liste(l) :
         l.supprime_en_tete()
     return copy
     #End
-        
+
+def copy_liste(l) :
+    #Begin
+    import copy
+    return copy.deepcopy(l)
+    #End
+    
 def construit_liste(valeur,l):
-        #begin
-        return liste(cellule(valeur,l.debut))
-        #end
+    #begin
+    return liste(cellule(valeur,l.debut))
+    #end
         
 

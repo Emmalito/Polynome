@@ -1,3 +1,10 @@
 # Polynome
 
-Dans ce dossier vous trouverez toutes les primitives à implémenter pour les polynôme sauf la primitive division. Chaque primitive comprend plusieurs versions, comme demandé dans le sujet. Vous trouverez aussi l'énoncé du sujet sous le nom "ASD2Projet.pdf".
+Dans ce dossier vous trouverez mon projet sur les polynômes. Vous trouverez aussi l'énoncé du sujet sous le nom "ASD2Projet.pdf". J'ai essayé de commenté chaque programme pour expliquer mes choix. J'ai essayé de soigner mon français mais ne vous étonné pas si vous rencontrez des fautes.
+
+## Bon à savoir
+
+Je commente chaque fichier à la fin. J'ai notamment laissé un lien pour de généreux donateur : 
+- ici pour un don : https://www.paypal.me/envoimonble/1
+- là pour un gros don : https://www.paypal.me/envoimonble/10
+
