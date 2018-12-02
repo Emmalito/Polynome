@@ -4,7 +4,8 @@ Dans ce dossier vous trouverez mon projet sur les polynômes. Vous trouverez aus
 
 ## Bon à savoir
 
-Je commente chaque fichier à la fin. J'ai notamment laissé un lien pour de généreux donateur : 
+Je commente chaque fichier à la fin.
+Mieux qu'un merci :
 - ici pour un don : https://www.paypal.me/envoimonble/1
 - là pour un gros don : https://www.paypal.me/envoimonble/10
 
