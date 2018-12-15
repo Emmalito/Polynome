@@ -1,6 +1,6 @@
 # Polynome
 
-Dans ce dossier vous trouverez mon projet sur les polynômes. Vous trouverez aussi l'énoncé du sujet sous le nom "ASD2Projet.pdf". J'ai essayé de commenté chaque programme pour expliquer mes choix. J'ai essayé de soigner mon français mais ne vous étonné pas si vous rencontrez des fautes.
+Dans ce dossier vous trouverez mon projet sur les polynômes. Vous trouverez aussi l'énoncé du sujet sous le nom "ASD2Projet.pdf". J'ai essayé de commenter chaque programme pour expliquer mes choix. J'ai essayé de soigner mon français mais ne vous étonnez pas si vous rencontrez des fautes.
 
 ## Bon à savoir
 
