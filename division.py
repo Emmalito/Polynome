@@ -39,6 +39,30 @@ def division_it(poly_1,poly_2) :
 
 #======================================================================================================
 
+def division(poly_1,poly_2,quotient=liste()) :
+   
+    #Begin
+    if poly_1.tete().p < poly_2.tete().p : 
+        print("Le reste est : ")
+        affichage_it(poly_1)
+        print("Le quotient est : ")
+        affichage_ptr(quotient)
+        return quotient                      #On retourne le polynome
+    else :
+        #begin
+        terme, poly = term(), liste()       
+        terme.p = poly_1.tete().p - poly_2.tete().p
+        terme.coef = poly_1.tete().coef / poly_2.tete().coef
+        poly = construit_liste(terme,poly)  
+        quotient = construit_liste(terme,quotient)  
+        poly_1 = soustraction(poly_1,multiplication_it(poly_2,poly)) 
+        while poly_1.tete().coef == 0 :    
+            poly_1.supprime_en_tete()
+        return division(poly_1,poly_2,quotient)  #On rappel la fonction
+    #End
+
+#======================================================================================================
+
 def division_rec(poly_1,poly_2,quotient=liste()) :
     """ Fonction recursive retournant le quotient de la division euclidienne de poly_1 par poly_2 """
     assert isinstance(poly_1,liste),'Poly_1 doit être une liste'
@@ -65,7 +89,7 @@ def division_rec(poly_1,poly_2,quotient=liste()) :
 
 #======================================================================================================
 
-def division_it(poly_1,poly_2) :
+def division_ptr(poly_1,poly_2) :
     """Fonction retournant le quotient de la division euclidienne de poly_1 par poly_2 en utilisant
         la structure des listes """
     assert isinstance(poly_1,liste),'Poly_1 doit être une liste'
@@ -114,10 +138,10 @@ def division_it(poly_1,poly_2) :
 
 
 
-#p = polynome("1x^0,-2x^1,-1x^2,2x^3")
-#l = polynome("1x^0,1x^1,1x^2")
-#m = division_it(p,l)
-#affichage_ptr(m)
+p = polynome("1x^0,-2x^1,-1x^2,2x^3")
+l = polynome("1x^0,1x^1,1x^2")
+m = division(p,l)
+affichage_ptr(m)
 
 
 
